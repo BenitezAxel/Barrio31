@@ -1,4 +1,7 @@
 import React from 'react';
+import Mapa from  './Components/Mapa.js';
+import Mapa2 from './Components/Mapa2.js';
+
 
 export default function App() {
     const [viewport, setVieport] = useState({
@@ -10,8 +13,11 @@ export default function App() {
     })
 
   return (
-    <div className="App">
-      
+    <div>
+      <Mapa/>
+      <Mapa2/>
     </div>
-  );
+  )
 }
+
+export default App
