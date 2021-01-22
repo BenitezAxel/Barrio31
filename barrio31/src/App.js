@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Boton from './Components/Boton.js';
+// import Boton from './Components/Boton.js';
 import Mapa from  './Components/Mapa.js';
 
 class App extends Component {
@@ -12,7 +12,6 @@ class App extends Component {
             manzanas: 'mapbox://styles/axel03/cke4v99cb1jpk19mpma6mkowo'
         };
     }
-
     
     cambiarEstilos = () => {
 
@@ -36,8 +35,10 @@ class App extends Component {
     render(){
         return (
             <div>
-            <Mapa selectStyle={this.state.selectStyle} />
-            <Boton cambiarEstilos={this.cambiarEstilos} />
+                <Mapa
+                selectStyle={this.state.selectStyle}
+                cambiarEstilos={this.cambiarEstilos}
+                />
             </div>
         )
     }

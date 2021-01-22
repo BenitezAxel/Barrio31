@@ -1,5 +1,7 @@
 import React,{ useState } from 'react';
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, {NavigationControl, FullscreenControl, GeolocateControl} from 'react-map-gl';
+import Boton from './Boton.js';
+
 
 function Mapa(props) {
     const [viewport, setViewport] = useState({
@@ -18,8 +20,23 @@ function Mapa(props) {
             onViewportChange={viewport =>{
             setViewport(viewport);
             }}>
-            Barrio 31
+                Barrio 31
+                <div style={{position: 'absolute', right: 0}}>
+                    <NavigationControl />
+                </div>
+                <div style={{position: 'absolute', right: 0, top: 120}}>
+                    <FullscreenControl />
+                </div>
+                    <GeolocateControl
+                    positionOptions={{enableHighAccuracy: false, timeout: 6000}}
+                    // trackUserLocation={true}
+                    // fitBoundsOptions={{maxZoom: 15}}
+                    />
+                <div style={{position: 'absolute', right: 0, top: 0}}>
+                </div>
+
             </ReactMapGL>
+            <Boton cambiarEstilos={props.cambiarEstilos} />
         </div>
     );
 }
