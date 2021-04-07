@@ -1,6 +1,7 @@
 import React,{ useState } from 'react';
 import ReactMapGL, {NavigationControl, FullscreenControl, GeolocateControl} from 'react-map-gl';
 import Boton from './Boton.js';
+import './Mapa.css';
 
 
 function Mapa(props) {
@@ -11,6 +12,13 @@ function Mapa(props) {
         height: '80vh',
         zoom: 14.6
     });
+
+    const geolocateStyle = {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        margin: 10
+    };
   
     return (
         <div>
@@ -21,18 +29,17 @@ function Mapa(props) {
             setViewport(viewport);
             }}>
                 Barrio 31
-                <div style={{position: 'absolute', right: 0}}>
+                <GeolocateControl
+                    style={geolocateStyle}
+                    positionOptions={{enableHighAccuracy: true}}
+                    trackUserLocation={true}
+                    auto={true}
+                />
+                <div style={{position: 'absolute', right: 0, top: 34, margin: 10}}>
                     <NavigationControl />
                 </div>
-                <div style={{position: 'absolute', right: 0, top: 120}}>
-                    <FullscreenControl />
-                </div>
-                    <GeolocateControl
-                    positionOptions={{enableHighAccuracy: false, timeout: 6000}}
-                    // trackUserLocation={true}
-                    // fitBoundsOptions={{maxZoom: 15}}
-                    />
-                <div style={{position: 'absolute', right: 0, top: 0}}>
+                <div style={{position: 'absolute', right: 0, top: 126, margin: 10}}>
+                    <FullscreenControl container={document.querySelector('body')} />
                 </div>
 
             </ReactMapGL>
